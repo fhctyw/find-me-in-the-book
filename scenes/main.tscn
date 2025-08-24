@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://nky81jx0mjec"]
+[gd_scene load_steps=5 format=3 uid="uid://nky81jx0mjec"]
 
 [ext_resource type="Texture2D" uid="uid://dj3foqhppirdg" path="res://assets/images/background_table.png" id="1_0wfyh"]
 [ext_resource type="AudioStream" uid="uid://cd306p5avmv6" path="res://assets/music/lost-horizon.mp3" id="1_o5qli"]
+
+[sub_resource type="Animation" id="Animation_0wfyh"]
+resource_name = "introduction"
+length = 5.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sugp2"]
+_data = {
+&"introduction": SubResource("Animation_0wfyh")
+}
 
 [node name="Main" type="Node"]
 
@@ -21,8 +30,10 @@ autoplay = true
 parameters/looping = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-186, 264)
-rotation = 0.745256
 offset = Vector2(800, 450)
+ignore_rotation = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sugp2")
+}
